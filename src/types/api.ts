@@ -168,6 +168,7 @@ export type Annotation = ClientAnnotationData & {
   uri: string;
   user: string;
   hidden: boolean;
+  credence: number;
 
   document: {
     title: string;

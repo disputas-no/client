@@ -31,6 +31,7 @@ const initialState = {
  * @prop {boolean} isPrivate
  * @prop {string[]} tags
  * @prop {string} text
+ * @prop {number} credence
  */
 
 /**
@@ -49,6 +50,7 @@ export class Draft {
     this.isPrivate = changes.isPrivate;
     this.tags = changes.tags;
     this.text = changes.text;
+    this.credence = changes.credence;
   }
   /**
    * Returns true if this draft matches a given annotation.

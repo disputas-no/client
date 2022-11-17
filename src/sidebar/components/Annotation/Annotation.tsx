@@ -21,6 +21,23 @@ import AnnotationHeader from './AnnotationHeader';
 import AnnotationQuote from './AnnotationQuote';
 import AnnotationReplyToggle from './AnnotationReplyToggle';
 
+interface ISliderProps {
+  credence: number;
+  onChange: (value: number) => void;
+}
+const Slider = ({ credence, onChange }: ISliderProps) => {
+  return (
+    <>
+      <input
+        type="range"
+        value={credence}
+        onChange={e => onChange(parseInt(e.currentTarget.value))}
+      />
+      <h3 className="flex h-full items-center justify-center">{credence}</h3>
+    </>
+  );
+};
+
 function SavingMessage() {
   return (
     <div
@@ -107,6 +124,11 @@ function Annotation({
     ? annotationRole(annotation)
     : `New ${annotationRole(annotation).toLowerCase()}`;
 
+  function updateCredence(newCredence: number) {
+    if (annotation) {
+      annotationsService.save({ ...annotation, credence: newCredence });
+    }
+  }
   return (
     <article
       className="space-y-4"
@@ -132,6 +154,12 @@ function Annotation({
       )}
 
       {isEditing && <AnnotationEditor annotation={annotation} draft={draft} />}
+      <div className="hyp-u-vertical-spacing--2 h-full flex flex-col justify-center items-center">
+        <Slider
+          credence={annotation.credence}
+          onChange={newCredence => updateCredence(newCredence)}
+        />
+      </div>
 
       {!isCollapsedReply && (
         <footer className="flex items-center">

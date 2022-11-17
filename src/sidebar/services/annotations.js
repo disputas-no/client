@@ -42,6 +42,7 @@ export class AnnotationsService {
     if (draft) {
       changes.tags = draft.tags;
       changes.text = draft.text;
+      changes.credence = draft.credence;
       changes.permissions = draft.isPrivate
         ? privatePermissions(annotation.user)
         : sharedPermissions(annotation.user, annotation.group);
@@ -94,6 +95,7 @@ export class AnnotationsService {
         hidden: false,
         links: {},
         document: { title: '' },
+        credence: NaN,
       },
       annotationData
     );
@@ -127,6 +129,7 @@ export class AnnotationsService {
         tags: annotation.tags,
         text: annotation.text,
         isPrivate: !metadata.isPublic(annotation),
+        credence: annotation.credence,
       });
     }
 
