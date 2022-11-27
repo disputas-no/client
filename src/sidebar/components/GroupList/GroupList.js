@@ -8,6 +8,7 @@ import { groupsByOrganization } from '../../helpers/group-organizations';
 import { isThirdPartyService } from '../../helpers/is-third-party-service';
 import { withServices } from '../../service-context';
 import { useSidebarStore } from '../../store';
+import { SvgIcon } from '@hypothesis/frontend-shared';
 
 import Menu from '../Menu';
 import MenuItem from '../MenuItem';
@@ -80,12 +81,6 @@ function GroupList({ settings }) {
 
   let label;
   if (focusedGroup) {
-    const icon =
-      focusedGroup.organization.logo || publisherProvidedIcon(settings) || '';
-
-    // If org name is missing, then treat this icon like decoration
-    // and pass an empty string.
-    const altName = orgName(focusedGroup) ? orgName(focusedGroup) : '';
     label = (
       <span
         className={classnames(
@@ -93,16 +88,7 @@ function GroupList({ settings }) {
           'shrink-0 flex items-center gap-x-1 text-lg text-color-text font-bold'
         )}
       >
-        {icon && (
-          <img
-            className={classnames(
-              // Tiny adjustment to make H logo align better with group name
-              'relative top-[1px] w-4 h-4'
-            )}
-            src={icon}
-            alt={altName}
-          />
-        )}
+        <SvgIcon name={'logo'} />
         {focusedGroup.name}
       </span>
     );

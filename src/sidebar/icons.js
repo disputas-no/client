@@ -31,7 +31,6 @@ import {
   link,
   listOrdered,
   listUnordered,
-  logo,
   plus,
   profile,
   refresh,
@@ -48,6 +47,7 @@ import annotateIcon from '../images/icons/annotate.svg';
 import lockIcon from '../images/icons/lock.svg';
 import replyIcon from '../images/icons/reply.svg';
 import sortIcon from '../images/icons/sort.svg';
+import disputas from '../images/icons/disputas.svg';
 
 // This is very similar to caretDown but is larger
 import expandMenuIcon from '../images/icons/expand-menu.svg';
@@ -94,7 +94,7 @@ export const sidebarIcons = {
   leave,
   link,
   lock: lockIcon,
-  logo,
+  logo: disputas,
   pointer: pointerIcon,
   profile,
   public: globe,
@@ -107,4 +107,5 @@ export const sidebarIcons = {
   sort: sortIcon,
   trash,
   twitter: socialTwitter,
+  disputas,
 };
